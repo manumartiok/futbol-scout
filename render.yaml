@@ -1,0 +1,22 @@
+# Configuración para desplegar en Render (plan gratuito).
+# En Render: New → Blueprint → elegir este repositorio.
+services:
+  - type: web
+    name: futbol-scout
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/status
+    envVars:
+      # El plan gratuito duerme el servidor y borra el disco al reiniciar:
+      # en vez de descargar todo en segundo plano, los datos vencen lunes y
+      # jueves a las 04:00 y se renuevan en la próxima visita.
+      - key: REFRESH_MODE
+        value: lazy
+      - key: TZ
+        value: America/Argentina/Buenos_Aires
+      - key: CACHE_MEM_ENTRIES
+        value: "1500"
+      - key: NODE_VERSION
+        value: "22"

@@ -1,0 +1,14 @@
+{
+  "name": "futbol-scout",
+  "version": "1.0.0",
+  "description": "Buscador de clubes y jugadores de las principales ligas con informes de rendimiento",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "refresh": "node refresh.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
